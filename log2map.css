@@ -44,4 +44,5 @@ svg * {
 .qso_points {
     stroke: none;
     fill: black;
+    opacity: 0.6;
 }
