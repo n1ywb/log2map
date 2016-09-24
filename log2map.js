@@ -89,9 +89,7 @@ var lines =
     }
   );
 
-console.log(JSON.stringify(lines));
-
-var graticule = d3.geoGraticule();
+// var graticule = d3.geoGraticule();
 
 var svg = d3.select("body").append("svg")
   .attr("width", width)
@@ -150,29 +148,16 @@ if (true) {
 
 d3.select(self.frameElement).style("height", height + "px");
 
-var qso_points = [
-  [0, 0],
-  [90, 0],
-  [-90, 0],
-  [180, 0]
-];
-var qso_lines = _.map(qso_points, function(i) {
-  return [home_c, i]
+d3.json('test.geojson', function(error, qso_data){
+    console.log(JSON.stringify(qso_data));
+    g.qso_points.append("path")
+      .datum(qso_data.points)
+      .attr("class", "qso_points")
+      .attr("d", path);
+
+    g.qso_lines.append("path")
+      .datum(qso_data.lines)
+      .attr("class", "qso_lines")
+      .attr("d", path);
+
 });
-
-g.qso_points.append("path")
-  .datum({
-    type: "MultiPoint",
-    coordinates: qso_points
-  })
-  .attr("class", "qso_points")
-  .attr("d", path);
-
-g.qso_lines.append("path")
-  .datum({
-    type: "MultiLineString",
-    coordinates: qso_lines
-  })
-  .attr("class", "qso_lines")
-  .attr("d", path);
-
