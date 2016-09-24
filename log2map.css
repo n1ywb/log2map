@@ -1,0 +1,41 @@
+
+body {
+  background: #fcfcfa;
+}
+
+svg * {
+  fill: none;
+  stroke: black;
+  stroke-width: .5px;
+}
+
+.graticule {
+  stroke: grey;
+}
+
+.range_rings {}
+
+.bearing_lines {}
+
+.home {
+  stroke-width: 1px;
+  fill: black;
+}
+
+.map_shapes {
+  fill: #DDD;
+  stroke: #555
+}
+
+.map_boundaries {
+  fill: none;
+  stroke: #555;
+}
+
+.qso_lines {
+  stroke-width: 1px;
+}
+
+.qso_points {
+  fill: white;
+}
