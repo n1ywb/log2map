@@ -151,17 +151,12 @@ g.qth_point.append("path")
   .attr("d", path);
 
 if (true) {
-  d3.json("https://raw.githubusercontent.com/mbostock/topojson/master/examples/world-50m.json", function(error, world) {
+  d3.json("ne_110m_admin_0_countries_lakes.geojson", function(error, world) {
     if (error) throw error;
 
     g.map_shapes.insert("path")
-      .datum(topojson.feature(world, world.objects.land))
+      .datum(world)
       .attr("class", "map_shapes")
-      .attr("d", path);
-
-    g.map_boundaries.insert("path")
-      .datum(topojson.feature(world, world.objects.countries))
-      .attr("class", "map_boundaries")
       .attr("d", path);
   });
 }
