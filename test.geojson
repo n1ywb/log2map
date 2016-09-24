@@ -1,0 +1,90 @@
+{
+  "lines": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "id": "LineString_1",
+        "type": "Feature",
+        "properties": {
+          "app_n1mm_exchange1": "VT",
+          "app_n1mm_networkedcompnr": "0",
+          "app_n1mm_points": "2",
+          "app_n1mm_radio_nr": "2",
+          "app_n1mm_radiointerfaced": "1",
+          "app_n1mm_run1run2": "1",
+          "band": "10M",
+          "call": "KB1NHV",
+          "contest_id": "ARRL-10",
+          "cqz": "5",
+          "freq": "28.49508",
+          "freq_rx": "28.49508",
+          "lat": 44.663827,
+          "lon": -72.783702,
+          "mode": "SSB",
+          "operator": "N1YWB",
+          "qso_date": "20131214",
+          "rst_rcvd": "59",
+          "rst_sent": "59",
+          "state": "VT",
+          "station_callsign": "N1YWB",
+          "stx": "1",
+          "time_on": "000506"
+        },
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              -72.486441,
+              44.196575
+            ],
+            [
+              -72.783702,
+              44.663827
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "points": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "id": "Point_1",
+        "type": "Feature",
+        "properties": {
+          "app_n1mm_exchange1": "VT",
+          "app_n1mm_networkedcompnr": "0",
+          "app_n1mm_points": "2",
+          "app_n1mm_radio_nr": "2",
+          "app_n1mm_radiointerfaced": "1",
+          "app_n1mm_run1run2": "1",
+          "band": "10M",
+          "call": "KB1NHV",
+          "contest_id": "ARRL-10",
+          "cqz": "5",
+          "freq": "28.49508",
+          "freq_rx": "28.49508",
+          "lat": 44.663827,
+          "lon": -72.783702,
+          "mode": "SSB",
+          "operator": "N1YWB",
+          "qso_date": "20131214",
+          "rst_rcvd": "59",
+          "rst_sent": "59",
+          "state": "VT",
+          "station_callsign": "N1YWB",
+          "stx": "1",
+          "time_on": "000506"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -72.783702,
+            44.663827
+          ]
+        }
+      }
+    ]
+  }
+}
