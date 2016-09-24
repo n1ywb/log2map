@@ -64,7 +64,8 @@ var projection = d3.geoAzimuthalEquidistant()
   .precision(0.1);
 
 var path = d3.geoPath()
-  .projection(projection);
+    .projection(projection)
+    .pointRadius(1);
 
 var circle = d3.geoCircle()
   .center(home_c);

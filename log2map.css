@@ -1,41 +1,47 @@
 
 body {
-  background: #fcfcfa;
+    background: #fcfcfa;
 }
 
 svg * {
-  fill: none;
-  stroke: black;
-  stroke-width: .5px;
+    fill: none;
+    stroke: grey;
+    stroke-width: .5px;
 }
 
 .graticule {
-  stroke: grey;
+    stroke: black;
+    opacity: .25;
 }
 
-.range_rings {}
+.range_rings {
+}
 
-.bearing_lines {}
+.bearing_lines {
+}
 
 .home {
-  stroke-width: 1px;
-  fill: black;
+    stroke-width: 1px;
+    fill: black;
 }
 
 .map_shapes {
-  fill: #DDD;
-  stroke: #555
+    fill: #DDD;
+    stroke: #555
 }
 
 .map_boundaries {
-  fill: none;
-  stroke: #555;
+    fill: none;
+    stroke: #555;
 }
 
 .qso_lines {
-  stroke-width: 1px;
+    stroke-width: .25px;
+    stroke: black;
+    opacity: 0.5;
 }
 
 .qso_points {
-  fill: white;
+    stroke: none;
+    fill: black;
 }
