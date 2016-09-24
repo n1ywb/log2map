@@ -6,6 +6,25 @@
 // forget about projecting the lines; get the centroid and BB of the map and draw the lines
 // using SVG origin. Projecting them basically a no-op anyway.
 
+// http://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html
+$.extend({
+  getUrlVars: function(){
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+      hash = hashes[i].split('=');
+      vars.push(hash[0]);
+      vars[hash[0]] = hash[1];
+    }
+    return vars;
+  },
+  getUrlVar: function(name){
+    return $.getUrlVars()[name];
+  }
+});
+
+
 var width = 650,
   height = 650;
 
@@ -148,7 +167,9 @@ if (true) {
 
 d3.select(self.frameElement).style("height", height + "px");
 
-d3.json('test.geojson', function(error, qso_data){
+//'test.geojson'
+
+d3.json($.getUrlVar("log"), function(error, qso_data){
     console.log(JSON.stringify(qso_data));
     g.qso_points.append("path")
       .datum(qso_data.points)
