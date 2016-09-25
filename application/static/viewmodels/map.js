@@ -156,7 +156,7 @@
 
             if (_dataurl) {
                 d3.json(_dataurl, function (error, qso_data) {
-                    console.log(JSON.stringify(qso_data));
+                    // console.log(JSON.stringify(qso_data));
                     g.qso_points.append("path")
                         .datum(qso_data.points)
                         .attr("class", "qso_points")
