@@ -1,4 +1,4 @@
-from application import db
+#from application import db
 
 ##
 # Create your own models here and they will be imported automaticaly. or

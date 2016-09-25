@@ -8,7 +8,7 @@ app.config.from_object('application.default_settings')
 app.config.from_envvar('PRODUCTION_SETTINGS', silent=True)
 
 # Connect to database with sqlalchemy.
-db = SQLAlchemy(app)
+#db = SQLAlchemy(app)
 
 
 import application.manager
