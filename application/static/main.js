@@ -6,7 +6,9 @@
         'transitions' : 'lib/durandal/js/transitions',
         'knockout': 'lib/knockout/knockout-3.4.0',
         'bootstrap': 'lib/bootstrap/js/bootstrap',
-        'jquery': 'lib/jquery/jquery-1.9.1'
+        'jquery': 'lib/jquery/jquery-1.9.1',
+        'd3': 'lib/d3/d3.v4',
+        'underscore': 'lib/underscore/underscore',
     },
     shim: {
         'bootstrap': {
