@@ -9,6 +9,7 @@
         'jquery': 'lib/jquery/jquery-1.9.1',
         'd3': 'lib/d3/d3.v4',
         'underscore': 'lib/underscore/underscore',
+        'dropzone': 'lib/dropzone/dropzone-amd-module',
     },
     shim: {
         'bootstrap': {
