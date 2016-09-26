@@ -11,7 +11,7 @@ define('viewmodels/upload', ['plugins/http', 'durandal/app', 'jquery', 'knockout
         function onDZSuccess(file, response) {
             var _id = response._id; // inserted_id
             window.setTimeout(function(){
-                router.navigate('/#map?log=api/log/' + _id)
+                router.navigate('map?log=api/log/' + _id)
             }, REDIRECT_DELAY_MS)
         }
 
