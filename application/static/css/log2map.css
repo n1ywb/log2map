@@ -47,3 +47,19 @@ svg * {
     fill: black;
     opacity: 0.6;
 }
+
+/*.page-host {*/
+    /*overflow-x: auto;*/
+    /*overflow-y: auto;*/
+/*}*/
+
+.svg-container {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	padding-bottom: 100%;
+	vertical-align: top;
+    horiz-align: center;
+	overflow: hidden;
+}
+

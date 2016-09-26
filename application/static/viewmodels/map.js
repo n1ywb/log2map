@@ -96,16 +96,13 @@
 
             // var graticule = d3.geoGraticule();
 
-            var svg = d3.select("#mapcontainer").append("svg")
-                .attr("width", width)
-                .attr("height", height)
-                .attr("id", "map-svg");
+            var svg = d3.select("#map-svg");
 
             var g = {
                 add: function (id) {
                     this[id] = svg.append("g").attr("id", id);
                 }
-            }
+            };
 
             g.add("map_shapes");
             g.add("map_boundaries");
