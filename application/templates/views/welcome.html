@@ -1,13 +1,31 @@
 ﻿<section>
-    <h2 data-bind="text:displayName"></h2>
-    <blockquote data-bind="text:description"></blockquote>
-    <h3>Features</h3>
-    <ul data-bind="foreach: features">
-        <li data-bind="text:$data"></li>
-    </ul>
-    <div class="alert alert-success">
-      <h4>Read Me Please</h4>
-        For information about this template and for general documenation please visit <a href="http://www.durandaljs.com">the official site</a> and if you can't find 
-        answers to your questions there, we hope you will join our <a href="https://groups.google.com/forum/?fromgroups#!forum/durandaljs">google group</a>.
+    <h2>Log2Map: Upload your log files and make maps!</h2>
+    <em>By Jeff Laughlin, N1YWB</em>
+    <h3>Steps</h3>
+    <ol>
+        <li>
+            <a href="#qrz">
+                Log in to your QRZ XML Account (Optional)
+            </a>
+        </li>
+        <li>
+            <a href="#upload">
+                Upload your log files
+            </a>
+        </li>
+        <li>
+            Look at pretty maps!
+            <a href="#map?log=api/log/57e95571b1ee1d46d9e3c920">
+                (Example)
+            </a>
+        </li>
+    </ol>
+    <div class="alert alert-danger">
+      <h4>Important</h4>
+        A QRZ XML subscription is highly recommended. Your password is
+        transmitted securely to QRZ over SSL and is not
+        stored. If you skip QRZ the system will only be able to look up
+        DXCC entities from callsign prefixes. This makes the map a lot less
+        interesting.
     </div>
 </section>
