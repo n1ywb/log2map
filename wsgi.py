@@ -34,7 +34,7 @@ handlers:
   # loggly:
   #   class: loggly.handlers.HTTPSHandler
   #   formatter: jsonFormat
-  #   url: 'https://logs-01.loggly.com/inputs/''' + os.environ['SERVICES_LOGGLY_TOKEN'] + '''/tag/python'
+  #   url: 'https://logs-01.loggly.com/inputs/''' + os.environ.get('SERVICES_LOGGLY_TOKEN', '') + '''/tag/python'
 
   stderr:
     class: logging.StreamHandler
