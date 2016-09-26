@@ -16,7 +16,6 @@ define('viewmodels/upload', ['plugins/http', 'durandal/app', 'jquery', 'knockout
         }
 
         dropzone.options.uploadLog = {
-            maxFiles: 1,
             init: function () {
                 this.on("success", onDZSuccess);
             }
