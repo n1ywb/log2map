@@ -9,4 +9,4 @@ HOST_NAME = os.environ.get('OPENSHIFT_APP_DNS','localhost')
 APP_NAME = os.environ.get('OPENSHIFT_APP_NAME','flask')
 IP = os.environ.get('OPENSHIFT_PYTHON_IP','127.0.0.1')
 PORT = int(os.environ.get('OPENSHIFT_PYTHON_PORT',8080))
-MONGO_URL = os.environ.get('OPENSHIFT_MONGODB_DB_URL', 'mongodb://admin:password@localhost:27017/')
+MONGO_URL = os.environ['OPENSHIFT_MONGODB_DB_URL']
