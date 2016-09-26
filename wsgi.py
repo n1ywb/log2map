@@ -1,5 +1,8 @@
 #!/usr/bin/python
+import logging
 import os
+
+import yaml
 
 virtenv = os.environ['OPENSHIFT_PYTHON_DIR'] + '/virtenv/'
 virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
@@ -13,6 +16,51 @@ except IOError:
 #
 
 from application import app as application
+
+
+loggingyaml = '''
+version: 1
+
+formatters:
+  default:
+    format: '%(asctime)s %(levelname)s %(name)s %(message)s'
+  jsonFormat:
+    (): pythonjsonlogger.jsonlogger.JsonFormatter
+    format: '%(asctime) %(created) %(filename) %(funcName) %(levelname) %(levelno) %(lineno) %(module) %(msecs) %(message) %(name) %(pathname) %(process) %(processName) %(relativeCreated) %(thread) %(threadName)'
+
+filters: []
+
+handlers:
+  # loggly:
+  #   class: loggly.handlers.HTTPSHandler
+  #   formatter: jsonFormat
+  #   url: 'https://logs-01.loggly.com/inputs/''' + os.environ['SERVICES_LOGGLY_TOKEN'] + '''/tag/python'
+
+  stderr:
+    class: logging.StreamHandler
+    formatter: default
+    stream: ext://sys.stderr
+
+loggers:
+#  sqlalchemy.engine:
+#    propagate: False
+#    level: WARNING
+#    handlers: [loggly,]
+#  sqlalchemy.engine.base.Engine.test:
+#    level: WARNING
+#    propagate: False
+#    handlers: [loggly,]
+#  sqlalchemy.pool:
+#    level: WARNING
+#  sqlalchemy.orm.unitofwork:
+#    level: WARNING
+
+root:
+  level: DEBUG
+  handlers: [stderr]
+'''
+
+logging.config.dictConfig(yaml.load(loggingyaml))
 
 #
 # Below for testing only
