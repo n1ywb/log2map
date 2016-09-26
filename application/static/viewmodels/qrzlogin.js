@@ -20,7 +20,7 @@ function (app, ko, http, $, router) {
                 "password": this.password(),
                 "username": this.username()
             };
-            var url = "http://xmldata.qrz.com/xml/current/";
+            var url = "https://xmldata.qrz.com/xml/current/";
             http.get(url, query)
                 .done(function(data, status, xhr) {
                     var errors = data.getElementsByTagName("Error");
