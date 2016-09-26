@@ -1,27 +1,27 @@
-<div>
-    <form data-bind="submit: login">
-        <div>
-            <p>In order to get the most value out of this service it's important to use QRZ.com to georeference the
-                callsigns in your log. The service can fallback to georeferencing to DXCC entity by
-                callsign prefix, but this is very low accuracy and puts all QSOs in the center of their country and
-                breaks on funny callsigns.
+<section>
+    <div>
+        <p>In order to get the most value out of this service it's important to use QRZ.com to georeference the
+            callsigns in your log. The service can fallback to georeferencing to DXCC entity by
+            callsign prefix, but this is very low accuracy and puts all QSOs in the center of their country and
+            breaks on funny callsigns.
 
-                QRZ data is much more interesting.</p>
+            QRZ data is much more interesting.</p>
 
-            <p>Security Note: Your password is sent from your browser directly to QRZ.com via SSL AJAX
-                request. Your password is not sent to any other server. It is not stored anywhere. After QRZ
-                authenticates you, it sends back a session key, which is sent to my server and used to
-                lookup the calls in your log. Session keys are ONLY useful for looking up callsigns via QRZ XML API.
-                They expire after 24 hours. Nevertheless I do not store the session key on my server; it's forgotten
-                once georeferencing is complete.</p>
+        <p>Security Note: Your password is sent from your browser directly to QRZ.com via SSL AJAX
+            request. Your password is not sent to any other server. It is not stored anywhere. After QRZ
+            authenticates you, it sends back a session key, which is sent to my server and used to
+            lookup the calls in your log. Session keys are ONLY useful for looking up callsigns via QRZ XML API.
+            They expire after 24 hours. Nevertheless I do not store the session key on my server; it's forgotten
+            once georeferencing is complete.</p>
 
-            <p>I DO cache the result of QRZ lookups so repeat log uploads should be fast.</p>
+        <p>I DO cache the result of QRZ lookups so repeat log uploads should be fast.</p>
 
-            <p>Your QRZ account must be subscribed to the
-                <a href="https://ssl.qrz.com/products/index.html">
-                    QRZ.com XML Logbook Data service</a>. Current price: $29.95/yr. If you know of
+        <p>Your QRZ account must be subscribed to the
+            <a href="https://ssl.qrz.com/products/index.html">
+                QRZ.com XML Logbook Data service</a>. Current price: $29.95/yr. If you know of
             a cheaper/better alternative, let me know.</p>
-        </div>
+    </div>
+    <form data-bind="submit: login">
         <div>
             <div>QRZ Username:</div>
             <div><input name="qrz-username" type="text" data-bind="value: username"/></div>
@@ -32,22 +32,30 @@
             <div><input name="qrz-password" type="password" data-bind="value: password"/></div>
         </div>
 
-        <div><button data-bind="click: login">Login to QRZ</button></div>
-
-        <div data-bind="visible: state() == 'working'">
-            <div>Busy, please wait...</div>
+        <div>
+            <button data-bind="click: login">Login to QRZ</button>
         </div>
 
-        <div data-bind="visible: state() == 'done'">
-            <div>Login Successful</div>
-            <div>Session Key: <span data-bind="text: key"></span></div>
-            <div>Next: <a href="#upload">Upload Your Log File</a></div>
-            <div>You should be automatically redirected to the update page in a few seconds</div>
-        </div>
-
-        <div data-bind="visible: state() == 'fail'">
-            <div>Login Failed</div>
-            <div>Error Message: <span data-bind="text: err"></span></div>
-        </div>
     </form>
-</div>
+
+    <div data-bind="visible: state() == 'working'">
+        <div>Busy, please wait...</div>
+    </div>
+
+    <div data-bind="visible: state() == 'done'">
+        <div>Login Successful</div>
+        <div>Session Key: <span data-bind="text: key"></span></div>
+        <div>Next: <a href="#upload">Upload Your Log File</a></div>
+        <div>You should be automatically redirected to the update page in a few seconds</div>
+    </div>
+
+    <div data-bind="visible: state() == 'fail'">
+        <div>Login Failed</div>
+        <div>Error Message: <span data-bind="text: err"></span></div>
+    </div>
+
+    <div data-bind="visible: state() == 'init' || state() == 'fail'">
+        <a href="#upload">Skip This Step</a>
+    </div>
+</section>
+

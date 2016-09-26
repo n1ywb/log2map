@@ -10,8 +10,8 @@
 
         this.compositionComplete = function () {
             var MAP_URL = "static/ne_110m_admin_0_countries_lakes.geojson";
-            var width = 1200,
-                height = 800;
+            var width = 900,
+                height = 900;
 
             var GEOID_R = 6371000.0; // meters
             var DEG_PER_M = 180.0 / (GEOID_R * Math.PI);
@@ -98,7 +98,8 @@
 
             var svg = d3.select("#mapcontainer").append("svg")
                 .attr("width", width)
-                .attr("height", height);
+                .attr("height", height)
+                .attr("id", "map-svg");
 
             var g = {
                 add: function (id) {

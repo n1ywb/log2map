@@ -7,6 +7,7 @@ svg * {
     fill: none;
     stroke: grey;
     stroke-width: .5px;
+    overflow: scroll;
 }
 
 .graticule {
