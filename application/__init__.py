@@ -9,9 +9,10 @@ from geojson.codec import GeoJSONEncoder
 # Create the app and configuration
 # Read the configuration file
 app = Flask(__name__)
-app.config.from_object('application.default_settings')
 if os.environ.get('OPENSHIFT_APP_NAME', False):
     app.config.from_object('application.production')
+else:
+    app.config.from_object('application.default_settings')
 app.json_encoder = GeoJSONEncoder
 mongo = PyMongo(app)
 
