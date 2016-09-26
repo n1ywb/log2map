@@ -45,8 +45,10 @@ def georeferencelog(logfile, key):
         app.logger.info("Opened ADIF format log %r" % logfile)
         qsolog = Log.from_adif(logfile)
 
-    with QrzSession(key=key) as sess:
-         qsolog.georeference(sess, ctydat)
+    sess = None
+    if key:
+        sess = QrzSession(key=key)
+    qsolog.georeference(sess, ctydat)
 
     points, lines = qsolog.geojson()
     d = dict(points=points, lines=lines)
