@@ -10,8 +10,8 @@
 
         this.compositionComplete = function () {
             var MAP_URL = "static/ne_110m_admin_0_countries_lakes.geojson";
-            var width = 650,
-                height = 650;
+            var width = 1200,
+                height = 800;
 
             var GEOID_R = 6371000.0; // meters
             var DEG_PER_M = 180.0 / (GEOID_R * Math.PI);
@@ -41,7 +41,7 @@
             var home_rot = d3.geoRotation(home_c);
 
             var projection = d3.geoAzimuthalEquidistant()
-                .scale(100)
+                .scale(130)
                 // TODO it's really this hard to center a map?
                 .rotate(home_rot.invert([0, 0]))
                 .translate([width / 2, height / 2])
