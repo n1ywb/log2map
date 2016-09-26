@@ -3,8 +3,8 @@
  */
 
 
-define('viewmodels/upload', ['plugins/http', 'durandal/app', 'jquery', 'knockout', 'dropzone', 'durandal/events', 'plugins/router'],
-    function (http, app, $, ko, dropzone, Events, router) {
+define('viewmodels/upload', ['plugins/http', 'durandal/app', 'jquery', 'knockout', 'dropzone', 'durandal/events', 'plugins/router', 'viewmodels/qrzlogin'],
+    function (http, app, $, ko, dropzone, Events, router, qrz) {
 
         var REDIRECT_DELAY_MS = 1000;
 
@@ -27,6 +27,8 @@ define('viewmodels/upload', ['plugins/http', 'durandal/app', 'jquery', 'knockout
         }
 
         var vm = {
+            key: qrz.key,
+            state: qrz.state,
             compositionComplete: onCompositionComplete
         };
 

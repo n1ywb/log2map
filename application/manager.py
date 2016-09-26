@@ -9,7 +9,7 @@ from bson.objectid import ObjectId
 
 from hamtools.geolog import Log
 from hamtools.ctydat import CtyDat
-from hamtools.qrz import NotFound
+from hamtools.qrz import NotFound, Session as QrzSession
 
 
 @app.route('/')
@@ -32,7 +32,7 @@ class DummyQRZ(object):
 ctydatflo = resource_stream('hamtools', "ctydat/cty.dat")
 ctydat = CtyDat(ctydatflo)
 
-def georeferencelog(logfile, username, password):
+def georeferencelog(logfile, key):
     CABRILLO_HEADER = 'START-OF-LOG'
 
     line = logfile.read(len(CABRILLO_HEADER))
@@ -45,10 +45,9 @@ def georeferencelog(logfile, username, password):
         app.logger.info("Opened ADIF format log %r" % logfile)
         qsolog = Log.from_adif(logfile)
 
-    # with qrz.Session(username, password, cachepath) as sess:
-    #     qsolog.georeference(sess, ctydat)
+    with QrzSession(key=key) as sess:
+         qsolog.georeference(sess, ctydat)
 
-    qsolog.georeference(DummyQRZ, ctydat)
     points, lines = qsolog.geojson()
     d = dict(points=points, lines=lines)
     return d
@@ -57,9 +56,11 @@ def georeferencelog(logfile, username, password):
 @app.route('/api/upload/post', methods=['POST'])
 def upload_log():
     # app.logger.debug(request.files['file'].read())
-    r = georeferencelog(request.files['file'], None, None)
-    operator = None
-    filename = None
+    key = request.form['key']
+    state = request.form['state']
+    r = georeferencelog(request.files['file'], key)
+    operator = None # georeferencelog() needs to return this
+    filename = None # it's in the file obj somewhere
     r = mongo.db.logs.insert_one({
         'operator': operator,
         'filename': filename,
