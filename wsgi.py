@@ -42,7 +42,7 @@ handlers:
     formatter: default
     stream: ext://sys.stderr
 
-loggers:
+# loggers:
 #  sqlalchemy.engine:
 #    propagate: False
 #    level: WARNING
