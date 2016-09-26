@@ -1,10 +1,11 @@
 import geojson
 from pkg_resources import resource_stream
 
-from flask import render_template, request
-
-from application import app
+from flask import render_template, request, jsonify, redirect
+from application import app, mongo
 from application.models import *
+
+from bson.objectid import ObjectId
 
 from hamtools.geolog import Log
 from hamtools.ctydat import CtyDat
@@ -50,11 +51,25 @@ def georeferencelog(logfile, username, password):
     qsolog.georeference(DummyQRZ, ctydat)
     points, lines = qsolog.geojson()
     d = dict(points=points, lines=lines)
-    return geojson.dumps(d, sort_keys=True)
+    return d
 
 
 @app.route('/api/upload/post', methods=['POST'])
 def upload_log():
     # app.logger.debug(request.files['file'].read())
-    return georeferencelog(request.files['file'], None, None)
+    r = georeferencelog(request.files['file'], None, None)
+    operator = None
+    filename = None
+    r = mongo.db.logs.insert_one({
+        'operator': operator,
+        'filename': filename,
+        'geojson': r
+    })
+    return jsonify({'_id': str(r.inserted_id)})
+
+
+@app.route('/api/log/<_id>', methods=['GET'])
+def download_geolog(_id):
+    r = mongo.db.logs.find_one({'_id': ObjectId(_id)})
+    return jsonify(r['geojson'])
 
