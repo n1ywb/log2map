@@ -25,9 +25,9 @@ version: 1
 formatters:
   default:
     format: '%(asctime)s %(levelname)s %(name)s %(message)s'
-  jsonFormat:
-    (): pythonjsonlogger.jsonlogger.JsonFormatter
-    format: '%(asctime) %(created) %(filename) %(funcName) %(levelname) %(levelno) %(lineno) %(module) %(msecs) %(message) %(name) %(pathname) %(process) %(processName) %(relativeCreated) %(thread) %(threadName)'
+  # jsonFormat:
+  #   (): pythonjsonlogger.jsonlogger.JsonFormatter
+  #   format: '%(asctime) %(created) %(filename) %(funcName) %(levelname) %(levelno) %(lineno) %(module) %(msecs) %(message) %(name) %(pathname) %(process) %(processName) %(relativeCreated) %(thread) %(threadName)'
 
 filters: []
 
