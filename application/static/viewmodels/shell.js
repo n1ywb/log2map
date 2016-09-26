@@ -8,10 +8,10 @@
         },
         activate: function () {
             router.map([
-                { route: '', title:'Welcome', moduleId: 'viewmodels/map', nav: true },
-                { route: 'map', title:'map', moduleId: 'viewmodels/map', nav: true },
-                { route: 'upload', title:'upload', moduleId: 'viewmodels/upload', nav: true },
-                { route: 'flickr', moduleId: 'viewmodels/flickr', nav: true }
+                { route: '', title:'Welcome', moduleId: 'viewmodels/welcome', nav: true },
+                { route: 'qrz', title:'QRZ Login', moduleId: 'viewmodels/qrzlogin', nav: true },
+                { route: 'upload', title:'Log Upload', moduleId: 'viewmodels/upload', nav: true },
+                { route: 'map', title:'Map', moduleId: 'viewmodels/map', nav: true }
             ]).buildNavigationModel();
             
             return router.activate();

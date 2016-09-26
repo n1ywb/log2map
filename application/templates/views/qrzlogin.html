@@ -1,0 +1,31 @@
+<div>
+    <form data-bind="submit: login">
+        <div>
+            <div>QRZ Username:</div>
+            <div><input name="qrz-username" type="text" data-bind="value: username"/></div>
+        </div>
+
+        <div>
+            <div>QRZ Password:</div>
+            <div><input name="qrz-password" type="password" data-bind="value: password"/></div>
+        </div>
+
+        <div><button data-bind="click: login">Login to QRZ</button></div>
+
+        <div data-bind="visible: state() == 'working'">
+            <div>Busy, please wait...</div>
+        </div>
+
+        <div data-bind="visible: state() == 'done'">
+            <div>Login Successful</div>
+            <div>Session Key: <span data-bind="text: key"></span></div>
+            <div>Next: <a href="#upload">Upload Your Log File</a></div>
+            <div>You should be automatically redirected to the update page in a few seconds</div>
+        </div>
+
+        <div data-bind="visible: state() == 'fail'">
+            <div>Login Failed</div>
+            <div>Error Message: <span data-bind="text: err"></span></div>
+        </div>
+    </form>
+</div>
