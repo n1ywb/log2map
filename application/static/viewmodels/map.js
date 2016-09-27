@@ -116,8 +116,7 @@
                     svg.append("defs")
                         .append("style")
                             .attr("type", "text/css")
-                            .text(
-                                "<![CDATA[" + data + "]]>");
+                            .text(data);
             }).fail(function(xhr, status, err){
                 app.showMessage("failed to get css file")
             });
