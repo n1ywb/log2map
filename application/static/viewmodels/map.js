@@ -1,7 +1,13 @@
 ﻿define(['plugins/http', 'durandal/app', 'knockout', 'd3', 'underscore', 'download', 'viewmodels/upload'],
     function (http, app, ko, d3, _, dl, upload) {
     var vm = function () {
-        var _dataurl = null;
+        this._dataurl = ko.observable();
+
+        this.onDownloadSVG = function () {
+            svg = document.getElementById("map-svg");
+            var svg_str = new XMLSerializer().serializeToString(svg);
+            dl(svg_str, upload.filename() + '.svg', 'image/svg+xml')
+        };
 
         this.onDownloadSVG = function () {
             svg = document.getElementById("map-svg");
@@ -11,7 +17,7 @@
 
         this.activate = function (args) {
             if (args) {
-                _dataurl = args['log'];
+                this._dataurl(args['log']);
             }
         };
 
@@ -166,8 +172,8 @@
 
             //'test.geojson'
 
-            if (_dataurl) {
-                d3.json(_dataurl, function (error, qso_data) {
+            if (this._dataurl()) {
+                d3.json(this._dataurl(), function (error, qso_data) {
                     // console.log(JSON.stringify(qso_data));
                     g.qso_points.append("path")
                         .datum(qso_data.points)
