@@ -6,6 +6,7 @@ from application import app, mongo
 from application.models import *
 
 from bson.objectid import ObjectId
+from bson.errors import InvalidId
 
 from hamtools.geolog import Log
 from hamtools.ctydat import CtyDat
@@ -73,6 +74,12 @@ def upload_log():
 
 @app.route('/api/log/<_id>', methods=['GET'])
 def download_geolog(_id):
-    r = mongo.db.logs.find_one({'_id': ObjectId(_id)})
+    try:
+        oid = ObjectId(_id)
+    except InvalidId:
+        return "invalid oid", 400
+    r = mongo.db.logs.find_one({'_id': oid})
+    if r is None:
+        return "log not found", 404
     return jsonify(r['geojson'])
 
