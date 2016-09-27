@@ -9,6 +9,7 @@ define('viewmodels/upload', ['plugins/http', 'durandal/app', 'jquery', 'knockout
         var REDIRECT_DELAY_MS = 1000;
 
         function onDZSuccess(file, response) {
+            vm.filename(file.name);
             var _id = response._id; // inserted_id
             window.setTimeout(function(){
                 router.navigate('map?log=api/log/' + _id)
@@ -26,6 +27,7 @@ define('viewmodels/upload', ['plugins/http', 'durandal/app', 'jquery', 'knockout
         }
 
         var vm = {
+            filename: ko.observable(),
             key: qrz.key,
             state: qrz.state,
             compositionComplete: onCompositionComplete

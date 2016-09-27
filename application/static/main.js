@@ -10,6 +10,7 @@
         'd3': 'lib/d3/d3.v4',
         'underscore': 'lib/underscore/underscore',
         'dropzone': 'lib/dropzone/dropzone-amd-module',
+        'download': 'lib/download',
     },
     shim: {
         'bootstrap': {

@@ -1,6 +1,13 @@
-﻿define(['plugins/http', 'durandal/app', 'knockout', 'd3', 'underscore'], function (http, app, ko, d3, _) {
+﻿define(['plugins/http', 'durandal/app', 'knockout', 'd3', 'underscore', 'download', 'viewmodels/upload'],
+    function (http, app, ko, d3, _, dl, upload) {
     var vm = function () {
         var _dataurl = null;
+
+        this.onDownloadSVG = function () {
+            svg = document.getElementById("map-svg");
+            var svg_str = new XMLSerializer().serializeToString(svg);
+            dl(svg_str, upload.filename() + '.svg', 'image/svg+xml')
+        };
 
         this.activate = function (args) {
             if (args) {
@@ -97,6 +104,16 @@
             // var graticule = d3.geoGraticule();
 
             var svg = d3.select("#map-svg");
+
+            http.get("static/css/log2map.css")
+                .done(function(data, status, xhr){
+                    svg.append("defs")
+                        .append("style")
+                            .attr("type", "text/css")
+                            .text(data);
+            }).fail(function(xhr, status, err){
+                app.showMessage("failed to get css file")
+            });
 
             var g = {
                 add: function (id) {
