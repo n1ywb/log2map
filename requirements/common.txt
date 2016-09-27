@@ -6,4 +6,3 @@ pycrypto==2.6.1
 Flask-PyMongo
 PyYAML==3.12
 git+https://github.com/n1ywb/python-hamtools.git#egg=hamtools
-reqeusts-cache
