@@ -10,6 +10,8 @@ from application import app
 loggingyaml = '''
 version: 1
 
+disable_existing_loggers: false
+
 formatters:
   default:
     format: '%(asctime)s %(levelname)s %(name)s %(message)s'
