@@ -51,8 +51,8 @@ def georeferencelog(logfile, key):
         sess = QrzSession(key=key)
     qsolog.georeference(sess, ctydat)
 
-    points, lines = qsolog.geojson()
-    d = dict(points=points, lines=lines)
+    qth, points, lines = qsolog.geojson()
+    d = dict(qth=qth, points=points, lines=lines)
     return d
 
 
@@ -61,15 +61,15 @@ def upload_log():
     # app.logger.debug(request.files['file'].read())
     key = request.form['key']
     state = request.form['state']
-    r = georeferencelog(request.files['file'], key)
+    geojson = georeferencelog(request.files['file'], key)
     operator = None # georeferencelog() needs to return this
     filename = None # it's in the file obj somewhere
     r = mongo.db.logs.insert_one({
         'operator': operator,
         'filename': filename,
-        'geojson': r
+        'geojson': geojson
     })
-    return jsonify({'_id': str(r.inserted_id)})
+    return jsonify({'_id': str(r.inserted_id), 'qth': geojson['qth']})
 
 
 @app.route('/api/log/<_id>', methods=['GET'])

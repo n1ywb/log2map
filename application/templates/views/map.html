@@ -1,7 +1,11 @@
-﻿<section id="mapcontainer">
-     <div class="svg-container">
-        <svg version="1.1" id="map-svg" viewBox="0 0 900 900"></svg>
-     </div>
-    <div><button data-bind="click: onDownloadSVG">Download SVG File</button></div>
-    <div><button><a data-bind="attr: {href: _dataurl}">Download GeoJSON File</a></button></div>
+﻿<section id="mapcontainer" style="overflow: hidden">
+    <div>
+        <button data-bind="click: onDownloadSVG">Download SVG File</button>
+        <button><a data-bind="attr: {href: _dataurl}">Download GeoJSON File</a></button>
+        Tips: Drag to pan, scroll to zoom. Also supports pinch/stretch multitouch. You may bookmark your map for later
+        but I will periodically wipe the DB during development.
+    </div>
+    <div class="svg-container">
+        <svg version="1.1" id="map-svg" viewBox="0 0 900 900" style="overflow: hidden"></svg>
+    </div>
 </section>
