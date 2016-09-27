@@ -61,6 +61,10 @@
                 .clipAngle(180 - 1e-3)
                 .precision(0.1);
 
+            var zoom = d3.zoom()
+                .scaleExtent([1, 8])
+                .on("zoom", zoomed);
+
             var path = d3.geoPath()
                 .projection(projection)
                 .pointRadius(1);
@@ -121,9 +125,11 @@
                 app.showMessage("failed to get css file")
             });
 
+            var everything = svg.append("g");
+
             var g = {
                 add: function (id) {
-                    this[id] = svg.append("g").attr("id", id);
+                    this[id] = everything.append("g").attr("id", id);
                 }
             };
 
@@ -135,6 +141,13 @@
             g.add("range_rings");
             g.add("bearing_lines");
 
+            svg.append("rect")
+                .attr("class", "overlay")
+                .attr("width", width)
+                .attr("height", height);
+
+            svg
+                .call(zoom);
 
             g.bearing_lines.selectAll("path")
                 .data(lines)
@@ -165,6 +178,10 @@
                         .attr("class", "map_shapes")
                         .attr("d", path);
                 });
+            }
+
+            function zoomed() {
+                everything.attr("transform", d3.event.transform);
             }
 
             d3.select(self.frameElement).style("height", height + "px");

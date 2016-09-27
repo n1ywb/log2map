@@ -13,6 +13,7 @@ svg * {
 .graticule {
     stroke: black;
     opacity: .25;
+    vector-effect: non-scaling-stroke;
 }
 
 .range_rings {
@@ -34,12 +35,14 @@ svg * {
 .map_boundaries {
     fill: none;
     stroke: #555;
+    vector-effect: non-scaling-stroke;
 }
 
 .qso_lines {
     stroke-width: .25px;
     stroke: black;
     opacity: 0.5;
+    vector-effect: non-scaling-stroke;
 }
 
 .qso_points {
@@ -61,5 +64,10 @@ svg * {
 	vertical-align: top;
     horiz-align: center;
 	overflow: hidden;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
 }
 
