@@ -1,9 +1,18 @@
 <section>
-    <form id="uploadLog" action="/api/upload/post" class="dropzone">
-        <input type="hidden" name="key" data-bind="value: key"/>
-        <input type="hidden" name="state" data-bind="value: state"/>
-        <div class="dz-message needsclick">
-            Drop Cabrillo or ADIF log files here or click here to select files.<br>
-        </div>
-    </form>
+    <div  style="margin: 20px">
+        <form id="uploadLog" action="/api/upload/post" class="dropzone">
+            <input type="hidden" name="key" data-bind="value: key"/>
+            <input type="hidden" name="state" data-bind="value: state"/>
+            <div class="dz-message needsclick">
+                Drop Cabrillo or ADIF log files here or click here to select files.<br>
+            </div>
+        </form>
+    </div>
+    <div class="alert alert-danger" style="margin: 20px">
+      <h4>Important ADIF Note</h4>
+        ADIF files MUST have the <span style="font-family: Courier">operator</span> field present and
+        populated with your callsign so the app can center the map on
+        your QTH. Eventualy I will add a feature to specify this manually
+        since so many ADIF files seem to be missing this field.
+    </div>
 </section>
