@@ -11,9 +11,10 @@ http://jefflaughlinconsulting.com
 
 Steps
 
-1. Log in to your QRZ XML Account (Optional)
-2. Upload your log files
-3. Look at pretty maps! (Example)
+1. Go to http://log2map-n1ywb.rhcloud.com/
+2. Log in to your QRZ XML Account (Optional)
+3. Upload your log files
+4. Look at pretty maps! (Example)
 
 Important
 
