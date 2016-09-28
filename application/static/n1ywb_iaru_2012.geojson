@@ -17752,5 +17752,16 @@
       }
     ],
     "type": "FeatureCollection"
+  },
+  "qth": {
+    "geometry": {
+      "coordinates": [
+        -72.486441,
+        44.196575
+      ],
+      "type": "Point"
+    },
+    "properties": {},
+    "type": "Feature"
   }
 }
