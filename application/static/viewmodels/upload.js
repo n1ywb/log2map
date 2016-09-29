@@ -17,9 +17,19 @@ define('viewmodels/upload', ['plugins/http', 'durandal/app', 'jquery', 'knockout
             }, REDIRECT_DELAY_MS)
         }
 
+        function onDZError(file, errorMessage, xhr) {
+            app.showMessage([
+                "Error in file ",
+                file.name,
+                ": ",
+                errorMessage
+            ].join(''))
+        }
+
         dropzone.options.uploadLog = {
             init: function () {
                 this.on("success", onDZSuccess);
+                this.on("error", onDZError);
             }
         };
 

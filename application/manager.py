@@ -61,15 +61,19 @@ def upload_log():
     # app.logger.debug(request.files['file'].read())
     key = request.form['key']
     state = request.form['state']
-    geojson = georeferencelog(request.files['file'], key)
-    operator = None # georeferencelog() needs to return this
-    filename = None # it's in the file obj somewhere
-    r = mongo.db.logs.insert_one({
-        'operator': operator,
-        'filename': filename,
-        'geojson': geojson
-    })
-    return jsonify({'_id': str(r.inserted_id), 'qth': geojson['qth']})
+    try:
+        geojson = georeferencelog(request.files['file'], key)
+        operator = None # georeferencelog() needs to return this
+        filename = None # it's in the file obj somewhere
+        r = mongo.db.logs.insert_one({
+            'operator': operator,
+            'filename': filename,
+            'geojson': geojson
+        })
+        return jsonify({'_id': str(r.inserted_id), 'qth': geojson['qth']})
+    except Exception, e:
+        return str(e), 500
+
 
 
 @app.route('/api/log/<_id>', methods=['GET'])
