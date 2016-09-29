@@ -125,7 +125,7 @@
                 .precision(0.1);
 
             var zoom = d3.zoom()
-                .scaleExtent([1, 8])
+                .scaleExtent([0.5, 9])
                 .on("zoom", zoomed);
 
             var path = d3.geoPath()
